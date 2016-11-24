@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	{% load staticfiles %}
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Google fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+
+	<!-- font awesome -->
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css'  %}" />
+
+	<link rel="stylesheet" href="{% static 'css/style.css'  %}">
+	<link rel="stylesheet" href="{% static 'css/reset.css'  %}">
+
+	<script src="{% static 'js/modernizr.js' %} "></script> <!-- Modernizr -->
+  	
+	<title>SmarTime | Inicio</title>
+</head>
+<body>
+	
+	
+	<section class="cd-intro">
+		<h1 class="cd-headline letters type">
+			<span>SmarTime for</span>
+			<span class="cd-words-wrapper">
+				<b class="is-visible">calendar</b>
+				<b>events</b>
+				<b>task</b>
+			</span>
+			<br>
+			<br>
+			<ul>
+                <li class="active"><a href="/"><span class="glyphicon glyphicon-home"></span></a></li>
+            </ul>
+		</h1>
+	</section> <!-- cd-intro -->
+
+	
+
+<script src="{% static 'js/jquery-2.1.1.js'  %}"></script>
+<script src="{% static 'js/main.js'  %}"></script> <!-- Resource jQuery -->
+</body>
+</html>
