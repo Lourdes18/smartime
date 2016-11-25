@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User, Alarm, Setting, Event, Homework
+from smartime.models import User, Alarm, Setting, Event, Homework
 
 
 # Register your models here.

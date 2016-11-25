@@ -8,12 +8,13 @@ from django.db import IntegrityError
 
 
 class User(models.Model):
-    email_user = models.CharField(max_length=1000)
-    pass_user = models.CharField(max_length=100)
-    location_user = models.CharField(max_length=1000)
+	name_user = models.CharField(max_length=50)
+	email_user = models.CharField(max_length=1000)
+	pass_user = models.CharField(max_length=100)
+	location_user = models.CharField(max_length=1000)
 
-    def __str__(self):              # __unicode__ on Python 2
-        return "%s %s %s %s" % (self.name_user, self.email_user, self.pass_user, self.location_user)
+	def __str__(self):              # __unicode__ on Python 2
+		return "%s %s %s %s" % (self.name_user, self.email_user, self.pass_user, self.location_user)
 
 class Alarm(models.Model):
 	date_alarm = models.DateField()
@@ -39,11 +40,11 @@ class Setting(models.Model):
         ('Si', 'Con vibracion'),
     )
 	title_setting = models.CharField(max_length=100, unique= True)
-	volumen_setting = models.CharField(max_length=2, choices=SOUND)
-	vibration_setting = models.CharField(max_length=2, choices=CHOICE)
+	volumen_setting = models.CharField(max_length=15, choices=SOUND)
+	vibration_setting = models.CharField(max_length=5, choices=CHOICE)
 
 	def __str__(self):              # __unicode__ on Python 2
-		return " %s, %i, %s " % (self.title_setting, self.volumen_setting, self.vibration_setting)
+		return " %s %s %s " % (self.title_setting, self.volumen_setting, self.vibration_setting)
 
 class Event(models.Model):
 
@@ -57,7 +58,7 @@ class Event(models.Model):
 
 
 	def __str__(self):              # __unicode__ on Python 2
-		return " %s, %s, %s, %s, %s " % (self.title_event, str(self.date_event), str(self.time_event), str(self.duration_event), self.volumen_setting, self.place_event)
+		return " %s %s %s %s %s " % (self.title_event, str(self.date_event), str(self.time_event), str(self.duration_event), self.volumen_setting, self.place_event)
 
 class Homework(models.Model):
 	CHOICE = (
