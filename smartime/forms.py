@@ -32,14 +32,13 @@ class EventForm(forms.ModelForm):
 	class Meta:
 		model = Event
 		fields = ('title_event', 'date_event', 'time_event', 'duration_event', 
-				  'long_event', 'latitud_event', 'setting_event', )
+				  'place_event', 'setting_event', )
 		labels = {
             'title_event': _('Evento'),
             'date_event': _('Fecha'),
             'time_event': _('Hora'),
             'duration_event': _('Duracion'),
-            'long_event': _('Longitud'),
-            'latitud_event': _('Latitud'),
+            'place_event': _('Longitud'),
             'setting_event': _('Configuracion'),
         }
 

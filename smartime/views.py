@@ -117,7 +117,7 @@ def remove_setting(request, pk):
     try: 
         setting = setting.objects.get(id = pk)
         setting.objects.filter(id = pk).delete()
-    except setting.DoesNotExist:
+    except Setting.DoesNotExist:
         setting = None
     return HttpResponseRedirect('/ver-configuraciones')
 
@@ -146,15 +146,15 @@ def new_event(request):
 
 def show_event(request, pk):
     try: 
-        event =  Setting.objects.get(id = pk)
-    except Setting.DoesNotExist:
+        event =  Event.objects.get(id = pk)
+    except Event.DoesNotExist:
         event = None
-    return render(request, 'settings/showSetting.html', {'event': event})
+    return render(request, 'events/showEvent.html', {'event': event})
 
 def edit_event(request, pk):
     try: 
-        event = Setting.objects.get(id = pk)
-    except Setting.DoesNotExist:
+        event = Event.objects.get(id = pk)
+    except Event.DoesNotExist:
       event = None
     if request.method == "POST":
         form = SettingForm(request.POST, instance=event)
@@ -162,10 +162,10 @@ def edit_event(request, pk):
             event = form.save(commit=False)
             event.author = request.user
             event.save()
-            return HttpResponseRedirect('/event')
+            return HttpResponseRedirect('/ver-eventos')
     else:
         form = SettingForm(instance=event)
-    return render(request, 'settings/editSetting.html', {'form': form})
+    return render(request, 'events/editEvent.html', {'form': form})
 
 
 def remove_event(request, pk):
@@ -174,7 +174,7 @@ def remove_event(request, pk):
         event.objects.filter(id = pk).delete()
     except Event.DoesNotExist:
         event = None
-    return HttpResponseRedirect('/ver-configuraciones')
+    return HttpResponseRedirect('/ver-eventos')
 
 #SCRUD tareas
 def show_homeworks(request):
@@ -198,3 +198,35 @@ def new_homework(request):
     else:
         form = HomeworkForm()
     return render(request, 'homeworks/newHomework.html', {'form': form})
+
+def show_homework(request, pk):
+    try: 
+        homework =  Homework.objects.get(id = pk)
+    except Homework.DoesNotExist:
+        homework = None
+    return render(request, 'homeworks/showHomework.html', {'homework': homework})
+
+def edit_homework(request, pk):
+    try: 
+        homework = Homework.objects.get(id = pk)
+    except Homework.DoesNotExist:
+      homework = None
+    if request.method == "POST":
+        form = HomeworkForm(request.POST, instance=homework)
+        if form.is_valid():
+            homework = form.save(commit=False)
+            homework.author = request.user
+            homework.save()
+            return HttpResponseRedirect('/ver-tareas')
+    else:
+        form = HomeworkForm(instance=homework)
+    return render(request, 'homeworks/editHomework.html', {'form': form})
+
+
+def remove_homework(request, pk):
+    try: 
+        homework = homework.objects.get(id = pk)
+        homework.objects.filter(id = pk).delete()
+    except Event.DoesNotExist:
+        homework = None
+    return HttpResponseRedirect('/ver-tareas')

@@ -8,14 +8,12 @@ from django.db import IntegrityError
 
 
 class User(models.Model):
-    name_user = models.CharField(max_length=100, unique= True)
     email_user = models.CharField(max_length=1000)
     pass_user = models.CharField(max_length=100)
-    long_user = models.DecimalField(max_digits=25,decimal_places=2,default=Decimal('0.00'))
-    latitud_user = models.DecimalField(max_digits=25,decimal_places=2,default=Decimal('0.00'))
+    location_user = models.CharField(max_length=1000)
 
     def __str__(self):              # __unicode__ on Python 2
-        return "%s %s %s %d %d" % (self.name_user, self.email_user, self.pass_user, self.long_user, self.latitud_user)
+        return "%s %s %s %s" % (self.name_user, self.email_user, self.pass_user, self.location_user)
 
 class Alarm(models.Model):
 	date_alarm = models.DateField()
@@ -53,14 +51,13 @@ class Event(models.Model):
 	date_event = models.DateField()
 	time_event = models.TimeField()
 	duration_event = models.TimeField()
-	long_event = models.DecimalField(max_digits=25,decimal_places=2,default=Decimal('0.00'))
-	latitud_event = models.DecimalField(max_digits=25,decimal_places=2,default=Decimal('0.00'))
+	place_event = models.CharField(max_length=100)
 	user_event = models.ForeignKey(User, on_delete=models.CASCADE, related_name="userid", to_field=('id'), default = 1)
 	setting_event = models.ForeignKey(Setting, on_delete=models.CASCADE, related_name="setting", to_field=('id'))
 
 
 	def __str__(self):              # __unicode__ on Python 2
-		return " %s, %s, %s, %s, %i, %d, %d " % (self.title_event, str(self.date_event), str(self.time_event), str(self.duration_event), self.volumen_setting, self.long_event, self.latitud_event)
+		return " %s, %s, %s, %s, %s " % (self.title_event, str(self.date_event), str(self.time_event), str(self.duration_event), self.volumen_setting, self.place_event)
 
 class Homework(models.Model):
 	CHOICE = (

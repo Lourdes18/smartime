@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-from decimal import Decimal
 
 
 class Migration(migrations.Migration):
@@ -27,8 +26,7 @@ class Migration(migrations.Migration):
                 ('date_event', models.DateField()),
                 ('time_event', models.TimeField()),
                 ('duration_event', models.TimeField()),
-                ('long_event', models.DecimalField(default=Decimal('0.00'), max_digits=25, decimal_places=2)),
-                ('latitud_event', models.DecimalField(default=Decimal('0.00'), max_digits=25, decimal_places=2)),
+                ('place_event', models.CharField(max_length=100)),
             ],
         ),
         migrations.CreateModel(
@@ -55,11 +53,9 @@ class Migration(migrations.Migration):
             name='User',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('name_user', models.CharField(unique=True, max_length=100)),
                 ('email_user', models.CharField(max_length=1000)),
                 ('pass_user', models.CharField(max_length=100)),
-                ('long_user', models.DecimalField(default=Decimal('0.00'), max_digits=25, decimal_places=2)),
-                ('latitud_user', models.DecimalField(default=Decimal('0.00'), max_digits=25, decimal_places=2)),
+                ('location_user', models.CharField(max_length=1000)),
             ],
         ),
         migrations.AddField(
