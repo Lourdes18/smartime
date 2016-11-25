@@ -59,8 +59,8 @@ def edit_alarm(request, pk):
 
 def remove_alarm(request, pk):
     try: 
-        alarm = alarm.objects.get(id = pk)
-        alarm.objects.filter(id = pk).delete()
+        alarm = Alarm.objects.get(id = pk)
+        Alarm.objects.filter(id = pk).delete()
     except Alarm.DoesNotExist:
         alarm = None
     return HttpResponseRedirect('/ver-alarmas')
