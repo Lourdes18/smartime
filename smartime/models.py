@@ -58,7 +58,7 @@ class Event(models.Model):
 
 
 	def __str__(self):              # __unicode__ on Python 2
-		return " %s %s %s %s %s " % (self.title_event, str(self.date_event), str(self.time_event), str(self.duration_event), self.volumen_setting, self.place_event)
+		return " %s %s %s %s %s " % (self.title_event, str(self.date_event), str(self.time_event), str(self.duration_event), self.place_event)
 
 class Homework(models.Model):
 	CHOICE = (
@@ -76,7 +76,7 @@ class Homework(models.Model):
 
 
 	def __str__(self):              # __unicode__ on Python 2
-		return " %s, %s, %s, %s, %s" % (self.title_homework, self.description_homework, str(self.date_event), str(self.time_homework), self.priority_homework)
+		return " %s %s %s %s %s" % (self.title_homework, self.description_homework, str(self.date_homework), str(self.time_homework), self.priority_homework)
 
 
 

@@ -180,7 +180,7 @@ def edit_event(request, pk):
 
 def remove_event(request, pk):
     try: 
-        event = event.objects.get(id = pk)
+        event = Event.objects.get(id = pk)
         event.objects.filter(id = pk).delete()
     except Event.DoesNotExist:
         event = None
@@ -217,10 +217,12 @@ def show_homework(request, pk):
     return render(request, 'homeworks/showHomework.html', {'homework': homework})
 
 def edit_homework(request, pk):
+    homework = []
     try: 
         homework = Homework.objects.get(id = pk)
     except Homework.DoesNotExist:
-      homework = None
+        homework = None
+
     if request.method == "POST":
         form = HomeworkForm(request.POST, instance=homework)
         if form.is_valid():
@@ -235,8 +237,8 @@ def edit_homework(request, pk):
 
 def remove_homework(request, pk):
     try: 
-        homework = homework.objects.get(id = pk)
+        homework = Homework.objects.get(id = pk)
         homework.objects.filter(id = pk).delete()
-    except Event.DoesNotExist:
+    except Homework.DoesNotExist:
         homework = None
     return HttpResponseRedirect('/ver-tareas')

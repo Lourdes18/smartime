@@ -45,9 +45,9 @@ class Migration(migrations.Migration):
             name='Setting',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('title_setting', models.CharField(max_length=100)),
+                ('title_setting', models.CharField(unique=True, max_length=100)),
                 ('volumen_setting', models.CharField(max_length=15, choices=[(b'Sin sonido', b'0%'), (b'Interior', b'20%'), (b'Bajo', b'40%'), (b'Medio', b'60%'), (b'Alto', b'80%'), (b'Exterior', b'100%')])),
-                ('vibration_setting', models.CharField(max_length=15, choices=[(b'No', b'Sin vibracion'), (b'Si', b'Con vibracion')])),
+                ('vibration_setting', models.CharField(max_length=5, choices=[(b'No', b'Sin vibracion'), (b'Si', b'Con vibracion')])),
             ],
         ),
         migrations.CreateModel(
@@ -59,11 +59,6 @@ class Migration(migrations.Migration):
                 ('pass_user', models.CharField(max_length=100)),
                 ('location_user', models.CharField(max_length=1000)),
             ],
-        ),
-        migrations.AddField(
-            model_name='homework',
-            name='homework_event',
-            field=models.ForeignKey(related_name='event', to='smartime.Event'),
         ),
         migrations.AddField(
             model_name='event',
