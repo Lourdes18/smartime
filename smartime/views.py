@@ -54,14 +54,14 @@ def edit_alarm(request, pk):
             return HttpResponseRedirect('/ver-alarmas')
     else:
         form = AlarmForm(instance=alarm)
-    return render(request, 'alamrs/editAlarm.html', {'form': form})
+    return render(request, 'alarms/editAlarm.html', {'form': form})
 
 
 def remove_alarm(request, pk):
     try: 
         alarm = alarm.objects.get(id = pk)
         alarm.objects.filter(id = pk).delete()
-    except alarm.DoesNotExist:
+    except Alarm.DoesNotExist:
         alarm = None
     return HttpResponseRedirect('/ver-alarmas')
 
