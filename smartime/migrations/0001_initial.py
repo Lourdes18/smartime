@@ -15,7 +15,8 @@ class Migration(migrations.Migration):
             name='Alarm',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('date_alarm', models.DateTimeField()),
+                ('date_alarm', models.DateField()),
+                ('time_alarm', models.TimeField()),
             ],
         ),
         migrations.CreateModel(
@@ -23,7 +24,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('title_event', models.CharField(max_length=100)),
-                ('date_event', models.DateTimeField()),
+                ('date_event', models.DateField()),
+                ('time_event', models.TimeField()),
                 ('duration_event', models.TimeField()),
                 ('volumen_setting', models.IntegerField()),
                 ('long_event', models.DecimalField(default=Decimal('0.00'), max_digits=25, decimal_places=2)),
@@ -36,7 +38,8 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('title_homework', models.CharField(max_length=100)),
                 ('description_homework', models.CharField(max_length=1000)),
-                ('date_homework', models.DateTimeField()),
+                ('date_homework', models.DateField()),
+                ('time_homework', models.TimeField()),
                 ('priority_homework', models.CharField(max_length=25, choices=[(b'1', b'Sin'), (b'2', b'Baja'), (b'3', b'Media'), (b'4', b'Alta')])),
             ],
         ),
