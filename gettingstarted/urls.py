@@ -11,5 +11,5 @@ import smartime.views
 
 urlpatterns = [
     url(r'^$', smartime.views.index, name='index'),
-    #url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
 ]
