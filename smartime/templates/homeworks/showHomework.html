@@ -1,4 +1,4 @@
-{% extends "alarms/_navbaralarm.html" %}
+{% extends "homeworks/_navbarhomework.html" %}
 {% load staticfiles %}
 
 {% block content %}
@@ -21,13 +21,18 @@
 
             <div class="page-header">
 		        <div class="post">
-		        	<h2>Fecha: {{ alarm.date_alarm }} 
-		        	<br>
-		        		Hora:  {{ alarm.time_alarm}}</h2>
-		        	<a class="btn btn-default" href="{% url 'edit_items' pk=bill.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-		        	<a class="btn btn-default" href="{% url 'remove_items' pk=bill.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+		        	<h2>{{ homework.title_homework }}</h2>
+		        	<a class="btn btn-default" href="{% url 'edit_homework' pk=homework.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+		        	<a class="btn btn-default" href="{% url 'remove_homework' pk=homework.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
 		        </div>
 		    </div>
+
+		    <div class="page-header">
+				<p>Descripcion: {{ homework.description_homework }}</p>
+				<p>Evento: {{ homework.event.title_event }}</p>
+				<p>Fecha:{{ homework.date_homework }} | Hora: {{ event.time_homework }} </p>
+				<p>Importancia: {{ homework.priority_homework }}</p>
+			</div>
 <!-- jquery -->
 <script src="{% static 'assets/jsListas/jquery.js'  %}"></script>
 

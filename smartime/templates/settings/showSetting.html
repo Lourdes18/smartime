@@ -1,4 +1,4 @@
-{% extends "alarms/_navbaralarm.html" %}
+{% extends "settings/_navbarsetting.html" %}
 {% load staticfiles %}
 
 {% block content %}
@@ -21,13 +21,45 @@
 
             <div class="page-header">
 		        <div class="post">
-		        	<h2>Fecha: {{ alarm.date_alarm }} 
-		        	<br>
-		        		Hora:  {{ alarm.time_alarm}}</h2>
-		        	<a class="btn btn-default" href="{% url 'edit_items' pk=bill.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-		        	<a class="btn btn-default" href="{% url 'remove_items' pk=bill.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+		        	<h2>{{ setting.title_setting }}</h2>
+		        	<a class="btn btn-default" href="{% url 'edit_setting' pk=setting.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+		        	<a class="btn btn-default" href="{% url 'remove_setting' pk=setting.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
 		        </div>
 		    </div>
+
+		    <div class="page-header">
+				<p>Volumen: {{ setting.volumen_setting }}</p>
+				<p>Vibración:{{ setting.get_vibration_setting_display }}</p>
+			</div>
+
+
+		    <div id="demo">
+
+			  <!-- Responsive table starts here -->
+			  <!-- For correct display on small screens you must add 'data-title' to each 'td' in your table -->
+			  <div class="table-responsive-vertical shadow-z-1">
+			  <!-- Table starts here -->
+			  <table id="table" class="table table-hover table-mc-light-blue text-center">
+			      <thead>
+			        <tr>
+			              <td>Evento</td>
+			              <td>Lugar</td>
+			              <td>Fecha</td>
+			        </tr>
+			      </thead>
+			      <tbody>
+			        {% for event in events %}
+			        <tr>
+			          <td data-title="Name">{{ event.title_event }}</td>
+			          <td data-title="Name">{{ event.place_event }}</td>
+			          <td data-title="Name">{{ event.time_event }}</td>
+			        </tr>
+			        {% endfor %}
+			      </tbody>
+			    </table>
+			</div>
+			</div>
+
 <!-- jquery -->
 <script src="{% static 'assets/jsListas/jquery.js'  %}"></script>
 

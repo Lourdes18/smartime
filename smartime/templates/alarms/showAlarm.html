@@ -24,8 +24,8 @@
 		        	<h2>Fecha: {{ alarm.date_alarm }} 
 		        	<br>
 		        		Hora:  {{ alarm.time_alarm}}</h2>
-		        	<a class="btn btn-default" href="{% url 'edit_items' pk=bill.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-		        	<a class="btn btn-default" href="{% url 'remove_items' pk=bill.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+		        	<a class="btn btn-default" href="{% url 'edit_alarm' pk=alarm.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+		        	<a class="btn btn-default" href="{% url 'remove_alarm' pk=alarm.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
 		        </div>
 		    </div>
 <!-- jquery -->

@@ -22,8 +22,8 @@
             <div class="page-header">
 		        <div class="post">
 		        	<h2>{{ event.title_event }}</h2>
-		        	<a class="btn btn-default" href="{% url 'edit_items' pk=bill.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-		        	<a class="btn btn-default" href="{% url 'remove_items' pk=bill.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+		        	<a class="btn btn-default" href="{% url 'edit_event' pk=event.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+		        	<a class="btn btn-default" href="{% url 'remove_event' pk=event.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
 		        </div>
 		    </div>
 
@@ -43,41 +43,24 @@
 			  <table id="table" class="table table-hover table-mc-light-blue text-center">
 			      <thead>
 			        <tr>
-			              <td>Ingrediente</td>
-			              <td>Tipo</td>
-			              <td>Cantidad necesaria</td>
-			              <td>Unidad</td>
-			              <td>Costo</td>
+			              <td>Tarea</td>
+			              <td>Descripcion</td>
+			              <td>Prioridad</td>
 			        </tr>
 			      </thead>
 			      <tbody>
-			        {% for recipe in recipes %}
-			        	{% if recipe.ingredient.active_ingrediente == 1 %}
+			        {% for homework in homeworks %}
 			        <tr>
-			          <td data-title="Name">{{ recipe.ingredient.name_ingredient }}</td>
-			          <td data-title="Name">{{ recipe.ingredient.get_type_ingredient_display }}</td>
-			          <td data-title="Name">{{ recipe.get_unity_menu_display }}</td>
-			          <td data-title="Name">{{ recipe.quantity_needed }}</td>
-			          <td data-title="Name">${{ recipe.costs_item }}</td>
+			          <td data-title="Name">{{ homework.title_homework }}</td>
+			          <td data-title="Name">{{ homework.description_homework }}</td>
+			          <td data-title="Name">{{ homework.get_priority_homework_display }}</td>
 			        </tr>
-			        	{% endif %}
 			        {% endfor %}
 			      </tbody>
 			    </table>
 			</div>
 			</div>
 
-			<div class="post text-center">
-		        <figure>
-		        		<img style='background-image: url({{ menu.image_menu }});width:450px;height:250px;background-size:100% 100%;'/>
-			    </figure>
-		        <figure>
-		        		<img style='background-image: url({{ menu.image_menu }});width:450px;height:250px;background-size:100% 100%;'/>
-			    </figure>
-			    <figure>
-		        		<img style='background-image: url({{ menu.image_menu }});width:450px;height:250px;background-size:100% 100%;'/>
-			    </figure>
-            </div>
 <!-- jquery -->
 <script src="{% static 'assets/jsListas/jquery.js'  %}"></script>
 
