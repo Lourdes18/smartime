@@ -18,7 +18,7 @@ class User(models.Model):
         return "%s %s %s %d %d" % (self.name_user, self.email_user, self.pass_user, self.long_user, self.latitud_user)
 
 class Alarm(models.Model):
-	date_alarm = models.DateTimeField(auto_now_add=True)
+	date_alarm = models.DateTimeField()
 	user_alarm = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user", to_field=('id'))
 
 	def __str__(self):              # __unicode__ on Python 2
@@ -39,7 +39,7 @@ class Setting(models.Model):
 
 class Event(models.Model):
 	title_event = models.CharField(max_length=100)
-	date_event = models.DateTimeField(auto_now_add=True)
+	date_event = models.DateTimeField()
 	duration_event = models.TimeField()
 	volumen_setting =models.IntegerField()
 	long_event = models.DecimalField(max_digits=25,decimal_places=2,default=Decimal('0.00'))
@@ -49,7 +49,7 @@ class Event(models.Model):
 
 
 	def __str__(self):              # __unicode__ on Python 2
-		return " %s, %s, %i, %d, %d " % (str(self.date_event), str(self.duration_event), self.volumen_setting, self.long_event, self.latitud_event)
+		return " %s, %s, %s, %i, %d, %d " % (self.title_event, str(self.date_event), str(self.duration_event), self.volumen_setting, self.long_event, self.latitud_event)
 
 class Homework(models.Model):
 	CHOICE = (
@@ -60,7 +60,7 @@ class Homework(models.Model):
     )
 	title_homework = models.CharField(max_length=100)
 	description_homework = models.CharField(max_length=1000)
-	date_homework = models.DateTimeField(auto_now_add=True)
+	date_homework = models.DateTimeField()
 	priority_homework = models.CharField(max_length=25, choices=CHOICE)
 
 	def __str__(self):              # __unicode__ on Python 2
