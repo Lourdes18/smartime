@@ -92,10 +92,10 @@ def new_setting(request):
 def show_setting(request, pk):
     try: 
         setting =  Setting.objects.get(id = pk)
-        events = Event.objects.filter(event_id = str(pk))
+        events = Event.objects.filter(setting_id = str(pk))
     except Setting.DoesNotExist:
         setting = None
-    return render(request, 'settings/showSetting.html', {'setting': setting, 'events':events})
+    return render(request, 'settings/showSetting.html', {'setting': setting, 'events' : events })
 
 def edit_setting(request, pk):
     try: 
