@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from smartime.forms import AlarmForm, SettingForm, EventForm, HomeworkForm
 from .models import User, Alarm, Setting, Event, Homework
 
