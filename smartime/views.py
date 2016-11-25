@@ -121,7 +121,7 @@ def edit_setting(request, pk):
 def remove_setting(request, pk):
     try: 
         setting = setting.objects.get(id = pk)
-        setting.objects.filter(id = pk).delete()
+        Setting.objects.filter(id = pk).delete()
     except Setting.DoesNotExist:
         setting = None
     return HttpResponseRedirect('/ver-configuraciones')
@@ -154,7 +154,7 @@ def show_event(request, pk):
     try: 
         event =  Event.objects.get(id = pk)
         try:
-            homeworks = Homework.objects.filter(event_id = str(pk))
+            homeworks = Homework.objects.filter( event_homework = str(pk))
         except Homework.DoesNotExist:
             homeworks = None
     except Event.DoesNotExist:
@@ -167,21 +167,21 @@ def edit_event(request, pk):
     except Event.DoesNotExist:
       event = None
     if request.method == "POST":
-        form = SettingForm(request.POST, instance=event)
+        form = EventForm(request.POST, instance=event)
         if form.is_valid():
             event = form.save(commit=False)
             event.author = request.user
             event.save()
             return HttpResponseRedirect('/ver-eventos')
     else:
-        form = SettingForm(instance=event)
+        form = EventForm(instance=event)
     return render(request, 'events/editEvent.html', {'form': form})
 
 
 def remove_event(request, pk):
     try: 
         event = Event.objects.get(id = pk)
-        event.objects.filter(id = pk).delete()
+        Event.objects.filter(id = pk).delete()
     except Event.DoesNotExist:
         event = None
     return HttpResponseRedirect('/ver-eventos')
@@ -238,7 +238,7 @@ def edit_homework(request, pk):
 def remove_homework(request, pk):
     try: 
         homework = Homework.objects.get(id = pk)
-        homework.objects.filter(id = pk).delete()
+        Homework.objects.filter(id = pk).delete()
     except Homework.DoesNotExist:
         homework = None
     return HttpResponseRedirect('/ver-tareas')
