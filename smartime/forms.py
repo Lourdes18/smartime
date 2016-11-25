@@ -38,7 +38,7 @@ class EventForm(forms.ModelForm):
             'date_event': _('Fecha'),
             'time_event': _('Hora'),
             'duration_event': _('Duracion'),
-            'place_event': _('Longitud'),
+            'place_event': _('Lugar'),
             'setting_event': _('Configuracion'),
         }
 
@@ -46,11 +46,12 @@ class HomeworkForm(forms.ModelForm):
 	class Meta:
 		model = Homework
 		fields = ('title_homework', 'description_homework', 'date_homework', 'time_homework', 
-				  'priority_homework',)
+				  'priority_homework', 'event_homework')
 		labels = {
-            'title_homework': _('Evento'),
-            'description_homework': _('Fecha'),
-            'date_homework': _('Hora'),
-            'time_homework': _('Duracion'),
-            'priority_homework': _('Longitud'),
+            'title_homework': _('Tarea'),
+            'description_homework': _('Descripcion'),
+            'date_homework': _('Fecha'),
+            'time_homework': _('Hora'),
+            'priority_homework': _('Prioridad'),
+            'event_homework': _('Evento relacionado'),
         }

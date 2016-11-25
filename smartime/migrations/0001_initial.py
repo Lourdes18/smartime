@@ -38,6 +38,7 @@ class Migration(migrations.Migration):
                 ('date_homework', models.DateField()),
                 ('time_homework', models.TimeField()),
                 ('priority_homework', models.CharField(max_length=25, choices=[(b'1', b'Sin'), (b'2', b'Baja'), (b'3', b'Media'), (b'4', b'Alta')])),
+                ('event_homework', models.ForeignKey(related_name='event', to='smartime.Event')),
             ],
         ),
         migrations.CreateModel(
@@ -57,6 +58,11 @@ class Migration(migrations.Migration):
                 ('pass_user', models.CharField(max_length=100)),
                 ('location_user', models.CharField(max_length=1000)),
             ],
+        ),
+        migrations.AddField(
+            model_name='event',
+            name='event_homework',
+            field=models.ForeignKey(related_name='event', to='smartime.Event'),
         ),
         migrations.AddField(
             model_name='event',

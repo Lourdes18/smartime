@@ -1,4 +1,4 @@
-{% extends "alarms/_navbaralarm.html" %}
+{% extends "events/_navbarevent.html" %}
 {% load staticfiles %}
 
 {% block content %}
@@ -18,12 +18,12 @@
 
 <link rel="stylesheet" href="{% static 'assets/style.css'  %}">
 <script src="{% static 'jsListas/js/modernizr.js' %}"></script> <!-- Modernizr -->
-				
-			<div class="page-header">
-                <h1>Nueva alarma</h1>
-		         <form method="POST" class="post-form">{% csrf_token %}
-            		{{ form.as_p }}       
-            	<button type="submit" type="submit" class="glyphicon glyphicon-save"></button>
+
+            <div class="page-header">
+                <h1>Editar alarma</h1>
+                <form method="POST" class="post-form">{% csrf_token %}
+            		{{ form.as_p }}
+            	<button hrfe="/menu" type="submit" class="glyphicon glyphicon-save"></button>
         		</form>
             </div>
 

@@ -147,9 +147,10 @@ def new_event(request):
 def show_event(request, pk):
     try: 
         event =  Event.objects.get(id = pk)
+        homeworks = Homework.objects.filter(menu_id = str(pk))
     except Event.DoesNotExist:
         event = None
-    return render(request, 'events/showEvent.html', {'event': event})
+    return render(request, 'events/showEvent.html', {'event': event, 'homeworks':homeworks})
 
 def edit_event(request, pk):
     try: 

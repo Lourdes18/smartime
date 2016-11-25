@@ -1,4 +1,4 @@
-{% extends "alarms/_navbaralarm.html" %}
+{% extends "homeworks/_navbarhomework.html" %}
 {% load staticfiles %}
 
 {% block content %}
@@ -16,14 +16,19 @@
 <!-- gallery -->
 <link rel="stylesheet" href="{% static 'assets/gallery/blueimp-gallery.min.css'  %}">
 
+<!-- favicon -->
+<link rel="shortcut icon" href="{% static 'images/favicon.ico'  %}" type="image/x-icon">
+<link rel="icon" href="{% static 'images/favicon.ico'  %}" type="image/x-icon">
+
+
 <link rel="stylesheet" href="{% static 'assets/style.css'  %}">
 <script src="{% static 'jsListas/js/modernizr.js' %}"></script> <!-- Modernizr -->
-				
-			<div class="page-header">
-                <h1>Nueva alarma</h1>
-		         <form method="POST" class="post-form">{% csrf_token %}
-            		{{ form.as_p }}       
-            	<button type="submit" type="submit" class="glyphicon glyphicon-save"></button>
+
+            <div class="page-header">
+                <h1>Editar alarma</h1>
+                <form method="POST" class="post-form">{% csrf_token %}
+            		{{ form.as_p }}
+            	<button hrfe="/menu" type="submit" class="glyphicon glyphicon-save"></button>
         		</form>
             </div>
 

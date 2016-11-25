@@ -71,6 +71,8 @@ class Homework(models.Model):
 	date_homework = models.DateField()
 	time_homework =models.TimeField()
 	priority_homework = models.CharField(max_length=25, choices=CHOICE)
+	event_homework = models.ForeignKey(Event, on_delete=models.CASCADE, related_name="event", to_field=('id'))
+
 
 	def __str__(self):              # __unicode__ on Python 2
 		return " %s, %s, %s, %s, %s" % (self.title_homework, self.description_homework, str(self.date_event), str(self.time_homework), self.priority_homework)

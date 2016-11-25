@@ -1,0 +1,101 @@
+{% extends "alarms/_navbaralarm.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<!-- bootstrap -->
+<link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css'  %}" />
+
+<!-- animate.css -->
+<link rel="stylesheet" href="{% static 'assets/animate/animate.css'  %}" />
+<link rel="stylesheet" href="{% static 'assets/animate/set.css'  %}" />
+
+<!-- gallery -->
+<link rel="stylesheet" href="{% static 'assets/gallery/blueimp-gallery.min.css'  %}">
+
+<link rel="stylesheet" href="{% static 'assets/style.css'  %}">
+<script src="{% static 'jsListas/js/modernizr.js' %}"></script> <!-- Modernizr -->
+
+            <div class="page-header">
+		        <div class="post">
+		        	<h2>{{ event.title_event }}</h2>
+		        	<a class="btn btn-default" href="{% url 'edit_items' pk=bill.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+		        	<a class="btn btn-default" href="{% url 'remove_items' pk=bill.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+		        </div>
+		    </div>
+
+		    <div class="page-header">
+				<p>Descripcion: {{ event.description_event }}</p>
+				<p>Fecha:{{ event.date_event }} | Hora: {{ event.time_event }} </p>
+				<p>Lugar: {{ event.place_event }} | Duracion: {{ event.duration_event }}</p>
+			</div>
+
+
+		    <div id="demo">
+
+			  <!-- Responsive table starts here -->
+			  <!-- For correct display on small screens you must add 'data-title' to each 'td' in your table -->
+			  <div class="table-responsive-vertical shadow-z-1">
+			  <!-- Table starts here -->
+			  <table id="table" class="table table-hover table-mc-light-blue text-center">
+			      <thead>
+			        <tr>
+			              <td>Ingrediente</td>
+			              <td>Tipo</td>
+			              <td>Cantidad necesaria</td>
+			              <td>Unidad</td>
+			              <td>Costo</td>
+			        </tr>
+			      </thead>
+			      <tbody>
+			        {% for recipe in recipes %}
+			        	{% if recipe.ingredient.active_ingrediente == 1 %}
+			        <tr>
+			          <td data-title="Name">{{ recipe.ingredient.name_ingredient }}</td>
+			          <td data-title="Name">{{ recipe.ingredient.get_type_ingredient_display }}</td>
+			          <td data-title="Name">{{ recipe.get_unity_menu_display }}</td>
+			          <td data-title="Name">{{ recipe.quantity_needed }}</td>
+			          <td data-title="Name">${{ recipe.costs_item }}</td>
+			        </tr>
+			        	{% endif %}
+			        {% endfor %}
+			      </tbody>
+			    </table>
+			</div>
+			</div>
+
+			<div class="post text-center">
+		        <figure>
+		        		<img style='background-image: url({{ menu.image_menu }});width:450px;height:250px;background-size:100% 100%;'/>
+			    </figure>
+		        <figure>
+		        		<img style='background-image: url({{ menu.image_menu }});width:450px;height:250px;background-size:100% 100%;'/>
+			    </figure>
+			    <figure>
+		        		<img style='background-image: url({{ menu.image_menu }});width:450px;height:250px;background-size:100% 100%;'/>
+			    </figure>
+            </div>
+<!-- jquery -->
+<script src="{% static 'assets/jsListas/jquery.js'  %}"></script>
+
+<!-- wow script -->
+<script src="{% static 'assets/wow/wow.min.js'  %}"></script>
+
+
+<!-- boostrap -->
+<script src="{% static 'assets/bootstrap/js/bootstrap.js'  %}" type="text/javascript" ></script>
+
+<!-- jquery mobile -->
+<script src="{% static 'assets/mobile/touchSwipe.min.js'  %}"></script>
+<script src="{% static 'assets/respond/respond.js'  %}"></script>
+
+<!-- gallery -->
+<script src="{% static 'assets/gallery/jquery.blueimp-gallery.min.js'  %}"></script>
+
+<!-- custom script -->
+<script src="{% static 'assets/jsListas/script.js'  %}"></script>
+
+{% endblock %}
