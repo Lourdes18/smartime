@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="{% static 'assets/style.css'  %}">
 <script src="{% static 'jsListas/js/modernizr.js' %}"></script> <!-- Modernizr -->
 
-            <div class="page-header">
+            <div>
                 <h1>Editar alarma</h1>
                 <form method="POST" class="post-form">{% csrf_token %}
             		{{ form.as_p }}
