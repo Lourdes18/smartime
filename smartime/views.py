@@ -92,7 +92,10 @@ def new_setting(request):
 def show_setting(request, pk):
     try: 
         setting =  Setting.objects.get(id = pk)
-        events = Event.objects.filter(setting_id = str(pk))
+        try: 
+            events = Event.objects.filter(setting_id = str(pk))
+        except Event.DoesNotExist:
+            events = Non
     except Setting.DoesNotExist:
         setting = None
     return render(request, 'settings/showSetting.html', {'setting': setting, 'events' : events })
@@ -148,7 +151,10 @@ def new_event(request):
 def show_event(request, pk):
     try: 
         event =  Event.objects.get(id = pk)
-        homeworks = Homework.objects.filter(event_id = str(pk))
+        try:
+            homeworks = Homework.objects.filter(event_id = str(pk))
+        except Homework.DoesNotExist:
+            homeworks = None
     except Event.DoesNotExist:
         event = None
     return render(request, 'events/showEvent.html', {'event': event, 'homeworks':homeworks})
