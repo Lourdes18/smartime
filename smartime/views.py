@@ -94,9 +94,9 @@ def show_setting(request, pk):
     try: 
         setting =  Setting.objects.get(id = pk)
         try: 
-            events = Event.objects.filter(setting_id = str(pk))
+            events = Event.objects.filter(setting_event_id = str(pk))
         except Event.DoesNotExist:
-            events = Non
+            events = None
     except Setting.DoesNotExist:
         setting = None
     return render(request, 'settings/showSetting.html', {'setting': setting, 'events' : events })

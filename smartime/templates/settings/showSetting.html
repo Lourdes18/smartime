@@ -19,19 +19,11 @@
 <link rel="stylesheet" href="{% static 'assets/style.css'  %}">
 <script src="{% static 'jsListas/js/modernizr.js' %}"></script> <!-- Modernizr -->
 
-            <div class="page-header">
+            <di class="page-header">
 		        <div class="post">
 		        	<h2>{{ setting.title_setting }}</h2>
 		        	<a class="btn btn-default" href="{% url 'edit_setting' pk=setting.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
 		        	<a class="btn btn-default" href="{% url 'remove_setting' pk=setting.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-		        </div>
-		    </div>
-
-		    <div class="page-header">
-				<p>Volumen: {{ setting.volumen_setting }}</p>
-				<p>Vibración:{{ setting.get_vibration_setting_display }}</p>
-			</div>
-
 
 		    <div id="demo">
 
@@ -39,7 +31,7 @@
 			  <!-- For correct display on small screens you must add 'data-title' to each 'td' in your table -->
 			  <div class="table-responsive-vertical shadow-z-1">
 			  <!-- Table starts here -->
-			  <table id="table" class="table table-hover table-mc-light-blue text-center">
+			  <table id="table" class="table table-hover table-mc-light-blvue text-center">
 			      <thead>
 			        <tr>
 			              <td>Evento</td>

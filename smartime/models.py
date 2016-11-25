@@ -22,7 +22,7 @@ class Alarm(models.Model):
 	user_alarm = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user", to_field=('id'), default = 1)
 
 	def __str__(self):              # __unicode__ on Python 2
-		return "%s" % (str(self.date_alarm), str(self.time_alarm))
+		return "%s %s" % (str(self.date_alarm), str(self.time_alarm))
 
 
 class Setting(models.Model):
