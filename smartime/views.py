@@ -90,6 +90,7 @@ def new_setting(request):
     return render(request, 'settings/newSetting.html', {'form': form})
 
 def show_setting(request, pk):
+    events = []
     try: 
         setting =  Setting.objects.get(id = pk)
         try: 
@@ -149,6 +150,7 @@ def new_event(request):
     return render(request, 'events/newEvent.html', {'form': form})
 
 def show_event(request, pk):
+    homeworks = []
     try: 
         event =  Event.objects.get(id = pk)
         try:
