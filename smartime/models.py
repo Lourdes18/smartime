@@ -20,33 +20,42 @@ class User(models.Model):
 class Alarm(models.Model):
 	date_alarm = models.DateField()
 	time_alarm = models.TimeField()
-	user_alarm = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user", to_field=('id'))
+	user_alarm = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user", to_field=('id'), default = 1)
 
 	def __str__(self):              # __unicode__ on Python 2
 		return "%s" % (str(self.date_alarm), str(self.time_alarm))
 
 
 class Setting(models.Model):
+	SOUND = (
+    	('Sin sonido', '0%'),
+        ('Interior', '20%'),
+        ('Bajo', '40%'),
+        ('Medio', '60%'),
+        ('Alto', '80%'),
+        ('Exterior', '100%'),
+    )
+
 	CHOICE = (
         ('No', 'Sin vibracion'),
         ('Si', 'Con vibracion'),
     )
 	title_setting = models.CharField(max_length=100, unique= True)
-	volumen_setting =models.IntegerField()
+	volumen_setting = models.CharField(max_length=2, choices=SOUND)
 	vibration_setting = models.CharField(max_length=2, choices=CHOICE)
 
 	def __str__(self):              # __unicode__ on Python 2
 		return " %s, %i, %s " % (self.title_setting, self.volumen_setting, self.vibration_setting)
 
 class Event(models.Model):
+
 	title_event = models.CharField(max_length=100)
 	date_event = models.DateField()
 	time_event = models.TimeField()
 	duration_event = models.TimeField()
-	volumen_setting =models.IntegerField()
 	long_event = models.DecimalField(max_digits=25,decimal_places=2,default=Decimal('0.00'))
 	latitud_event = models.DecimalField(max_digits=25,decimal_places=2,default=Decimal('0.00'))
-	user_event = models.ForeignKey(User, on_delete=models.CASCADE, related_name="userid", to_field=('id'))
+	user_event = models.ForeignKey(User, on_delete=models.CASCADE, related_name="userid", to_field=('id'), default = 1)
 	setting_event = models.ForeignKey(Setting, on_delete=models.CASCADE, related_name="setting", to_field=('id'))
 
 

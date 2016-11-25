@@ -27,7 +27,6 @@ class Migration(migrations.Migration):
                 ('date_event', models.DateField()),
                 ('time_event', models.TimeField()),
                 ('duration_event', models.TimeField()),
-                ('volumen_setting', models.IntegerField()),
                 ('long_event', models.DecimalField(default=Decimal('0.00'), max_digits=25, decimal_places=2)),
                 ('latitud_event', models.DecimalField(default=Decimal('0.00'), max_digits=25, decimal_places=2)),
             ],
@@ -48,7 +47,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('title_setting', models.CharField(unique=True, max_length=100)),
-                ('volumen_setting', models.IntegerField()),
+                ('volumen_setting', models.CharField(max_length=2, choices=[(b'Sin sonido', b'0%'), (b'Interior', b'20%'), (b'Bajo', b'40%'), (b'Medio', b'60%'), (b'Alto', b'80%'), (b'Exterior', b'100%')])),
                 ('vibration_setting', models.CharField(max_length=2, choices=[(b'No', b'Sin vibracion'), (b'Si', b'Con vibracion')])),
             ],
         ),
@@ -71,11 +70,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='event',
             name='user_event',
-            field=models.ForeignKey(related_name='userid', to='smartime.User'),
+            field=models.ForeignKey(related_name='userid', default=1, to='smartime.User'),
         ),
         migrations.AddField(
             model_name='alarm',
             name='user_alarm',
-            field=models.ForeignKey(related_name='user', to='smartime.User'),
+            field=models.ForeignKey(related_name='user', default=1, to='smartime.User'),
         ),
     ]

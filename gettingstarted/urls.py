@@ -18,4 +18,16 @@ urlpatterns = [
     #Alarmas
     url(r'^ver-alarmas$', smartime.views.show_alarms, name='show_alarms'),
     url(r'^nueva-alarma$', smartime.views.new_alarm, name='new_alarm'),
+
+    #Configuraciones
+    url(r'^ver-configuraciones$', smartime.views.show_settings, name='show_settings'),
+    url(r'^nueva-configuracion$', smartime.views.new_setting, name='new_setting'),
+
+    #Eventos
+    url(r'^ver-eventos$', smartime.views.show_events, name='show_events'),
+    url(r'^nuevo-evento$', smartime.views.new_event, name='new_event'),
+
+    #Tareas
+    url(r'^ver-tareas$', smartime.views.show_homeworks, name='show_homeworks'),
+    url(r'^nueva-tarea$', smartime.views.new_homework, name='new_homework'),
 ]

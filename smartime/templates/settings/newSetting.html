@@ -1,0 +1,55 @@
+{% extends "settings/_navbarsetting.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<!-- bootstrap -->
+<link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css'  %}" />
+
+<!-- animate.css -->
+<link rel="stylesheet" href="{% static 'assets/animate/animate.css'  %}" />
+<link rel="stylesheet" href="{% static 'assets/animate/set.css'  %}" />
+
+<!-- gallery -->
+<link rel="stylesheet" href="{% static 'assets/gallery/blueimp-gallery.min.css'  %}">
+
+<!-- favicon -->
+<link rel="shortcut icon" href="{% static 'images/favicon.ico'  %}" type="image/x-icon">
+<link rel="icon" href="{% static 'images/favicon.ico'  %}" type="image/x-icon">
+
+
+<link rel="stylesheet" href="{% static 'assets/style.css'  %}">
+<script src="{% static 'jsListas/js/modernizr.js' %}"></script> <!-- Modernizr -->
+				
+			<div class="page-header">
+                <h1>Nueva alarma</h1>
+		         <form method="POST" class="post-form">{% csrf_token %}
+            		{{ form.as_p }}
+            	<button type="submit" type="submit" class="glyphicon glyphicon-save"></button>
+        		</form>
+            </div>
+
+<!-- jquery -->
+<script src="{% static 'assets/jsListas/jquery.js'  %}"></script>
+
+<!-- wow script -->
+<script src="{% static 'assets/wow/wow.min.js'  %}"></script>
+
+
+<!-- boostrap -->
+<script src="{% static 'assets/bootstrap/js/bootstrap.js'  %}" type="text/javascript" ></script>
+
+<!-- jquery mobile -->
+<script src="{% static 'assets/mobile/touchSwipe.min.js'  %}"></script>
+<script src="{% static 'assets/respond/respond.js'  %}"></script>
+
+<!-- gallery -->
+<script src="{% static 'assets/gallery/jquery.blueimp-gallery.min.js'  %}"></script>
+
+<!-- custom script -->
+<script src="{% static 'assets/jsListas/script.js'  %}"></script>
+
+{% endblock %}
