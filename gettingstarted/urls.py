@@ -18,6 +18,9 @@ urlpatterns = [
     #Alarmas
     url(r'^ver-alarmas$', smartime.views.show_alarms, name='show_alarms'),
     url(r'^nueva-alarma$', smartime.views.new_alarm, name='new_alarm'),
+    url(r'^ver-alarma/(?P<pk>[0-9]+)$', smartime.views.show_alarm, name='show_alarm'),
+    url(r'^modificar-alarma/(?P<pk>[0-9]+)$', smartime.views.edit_alarm, name='edit_alarm'),
+    url(r'^eliminar-alarma/(?P<pk>[0-9]+)$', smartime.views.remove_alarm, name='remove_alarm'),
 
     #Configuraciones
     url(r'^ver-configuraciones$', smartime.views.show_settings, name='show_settings'),

@@ -16,6 +16,8 @@ class AlarmForm(forms.ModelForm):
             'time_alarm': _('Hora'),
         }
 
+
+
 class SettingForm(forms.ModelForm):
 	class Meta:
 		model = Setting

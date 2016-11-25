@@ -33,6 +33,39 @@ def new_alarm(request):
         form = AlarmForm()
     return render(request, 'alarms/newAlarm.html', {'form': form})
 
+def show_alarm(request, pk):
+    try: 
+        alarm =  Alarm.objects.get(id = pk)
+    except Alarm.DoesNotExist:
+        alarm = None
+    return render(request, 'alarms/showAlarm.html', {'alarm': alarm})
+
+def edit_alarm(request, pk):
+    try: 
+        alarm = Alarm.objects.get(id = pk)
+    except Alarm.DoesNotExist:
+      alarm = None
+    if request.method == "POST":
+        form = AlarmForm(request.POST, instance=alarm)
+        if form.is_valid():
+            alarm = form.save(commit=False)
+            alarm.author = request.user
+            alarm.save()
+            return HttpResponseRedirect('/ver-alarmas')
+    else:
+        form = AlarmForm(instance=alarm)
+    return render(request, 'alamrs/editAlarm.html', {'form': form})
+
+
+def remove_alarm(request, pk):
+    try: 
+        alarm = alarm.objects.get(id = pk)
+        alarm.objects.filter(id = pk).delete()
+    except alarm.DoesNotExist:
+        alarm = None
+    return HttpResponseRedirect('/ver-alarmas')
+
+
 #SCRUD Configuraciones
 def show_settings(request):
     # return HttpResponse('Hello from Python!')
@@ -56,6 +89,38 @@ def new_setting(request):
         form = SettingForm()
     return render(request, 'settings/newSetting.html', {'form': form})
 
+def show_setting(request, pk):
+    try: 
+        setting =  Setting.objects.get(id = pk)
+    except Setting.DoesNotExist:
+        setting = None
+    return render(request, 'settings/showSetting.html', {'setting': setting})
+
+def edit_setting(request, pk):
+    try: 
+        setting = Setting.objects.get(id = pk)
+    except Setting.DoesNotExist:
+      setting = None
+    if request.method == "POST":
+        form = SettingForm(request.POST, instance=setting)
+        if form.is_valid():
+            setting = form.save(commit=False)
+            setting.author = request.user
+            setting.save()
+            return HttpResponseRedirect('/ver-configuraciones')
+    else:
+        form = SettingForm(instance=setting)
+    return render(request, 'settings/editSetting.html', {'form': form})
+
+
+def remove_setting(request, pk):
+    try: 
+        setting = setting.objects.get(id = pk)
+        setting.objects.filter(id = pk).delete()
+    except setting.DoesNotExist:
+        setting = None
+    return HttpResponseRedirect('/ver-configuraciones')
+
 #SCRUD Eventos
 def show_events(request):
     # return HttpResponse('Hello from Python!')
@@ -78,6 +143,38 @@ def new_event(request):
     else:
         form = EventForm()
     return render(request, 'events/newEvent.html', {'form': form})
+
+def show_event(request, pk):
+    try: 
+        event =  Setting.objects.get(id = pk)
+    except Setting.DoesNotExist:
+        event = None
+    return render(request, 'settings/showSetting.html', {'event': event})
+
+def edit_event(request, pk):
+    try: 
+        event = Setting.objects.get(id = pk)
+    except Setting.DoesNotExist:
+      event = None
+    if request.method == "POST":
+        form = SettingForm(request.POST, instance=event)
+        if form.is_valid():
+            event = form.save(commit=False)
+            event.author = request.user
+            event.save()
+            return HttpResponseRedirect('/event')
+    else:
+        form = SettingForm(instance=event)
+    return render(request, 'settings/editSetting.html', {'form': form})
+
+
+def remove_event(request, pk):
+    try: 
+        event = event.objects.get(id = pk)
+        event.objects.filter(id = pk).delete()
+    except Event.DoesNotExist:
+        event = None
+    return HttpResponseRedirect('/ver-configuraciones')
 
 #SCRUD tareas
 def show_homeworks(request):
