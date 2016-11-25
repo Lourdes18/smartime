@@ -10,6 +10,11 @@ def index(request):
     # return HttpResponse('Hello from Python!')
     return render(request, 'index.html')
 
+# Create your views here.
+def maps(request):
+    # return HttpResponse('Hello from Python!')
+    return render(request, 'events/maps.html')
+
 #SCRUD alarmas
 def show_alarms(request):
     # return HttpResponse('Hello from Python!')

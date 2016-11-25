@@ -13,6 +13,7 @@ urlpatterns = [
 	
 	#Vistas principales
     url(r'^$', smartime.views.index, name='index'),
+    url(r'^maps$', smartime.views.maps, name='maps'),
     url(r'^admin/', include(admin.site.urls)),
 
     #Alarmas
