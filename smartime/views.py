@@ -13,7 +13,7 @@ def index(request):
 #SCRUD alarmas
 def show_alarms(request):
     # return HttpResponse('Hello from Python!')
-    alarms = Alarm.objects.all()
+    alarms = Alarm.objects.all().order_by('date_alarm').reverse()
     return render(request, 'alarms/showAlarms.html',{'alarms': alarms})
 
 def new_alarm(request):
@@ -66,7 +66,7 @@ def remove_alarm(request, pk):
 #SCRUD Configuraciones
 def show_settings(request):
     # return HttpResponse('Hello from Python!')
-    settings = Setting.objects.all()
+    settings = Setting.objects.all().order_by('title_setting')
     return render(request, 'settings/showSettings.html',{'settings': settings})
 
 def new_setting(request):
@@ -123,7 +123,7 @@ def remove_setting(request, pk):
 #SCRUD Eventos
 def show_events(request):
     # return HttpResponse('Hello from Python!')
-    events = Event.objects.all()
+    events = Event.objects.all().order_by('date_event').reverse()
     return render(request, 'events/showEvents.html',{'events': events})
 
 def new_event(request):
@@ -180,7 +180,7 @@ def remove_event(request, pk):
 #SCRUD tareas
 def show_homeworks(request):
     # return HttpResponse('Hello from Python!')
-    homeworks = Homeworks.objects.all()
+    homeworks = Homework.objects.all().order_by('date_homework').reverse()
     return render(request, 'homeworks/showHomeworks.html',{'homeworks': homeworks})
 
 def new_homework(request):
