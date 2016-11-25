@@ -19,9 +19,30 @@
 <link rel="stylesheet" href="{% static 'assets/style.css'  %}">
 <script src="{% static 'jsListas/js/modernizr.js' %}"></script> <!-- Modernizr -->
 				
-			<div class="page-header">
-					<h1>Prueba</h1>
-            </div>
+			<!-- Responsive table starts here -->
+  <!-- For correct display on small screens you must add 'data-title' to each 'td' in your table -->
+  <div class="table-responsive-vertical shadow-z-1">
+  <!-- Table starts here -->
+  <table id="table" class="table table-hover table-mc-light-blue text-center">
+      <thead>
+        <tr>
+              <td>Fecha</td>
+              <td>Hora</td>
+              <td>Ver</td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for alarm in alarms %}
+          <tr>
+          <td data-title="Name">{{ alarm.date_alarm }}</td>
+          <td data-title="Name">{{ alarm.time_alarm }}</td>
+          <td data-title="Name"><a class="btn btn-default" href="{% url 'show_alarm' pk=alarm.pk %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+</div>
 
 <!-- jquery -->
 <script src="{% static 'assets/jsListas/jquery.js'  %}"></script>

@@ -19,9 +19,31 @@
 <link rel="stylesheet" href="{% static 'assets/style.css'  %}">
 <script src="{% static 'jsListas/js/modernizr.js' %}"></script> <!-- Modernizr -->
 				
-			<div class="page-header">
-					<h1>Prueba Eventos</h1>
-            </div>
+
+  <div class="table-responsive-vertical shadow-z-1">
+  <!-- Table starts here -->
+  <table id="table" class="table table-hover table-mc-light-blue text-center">
+      <thead>
+        <tr>
+        	  <td>Evento</td>
+              <td>Fecha</td>
+              <td>Hora</td>
+              <td>Ver</td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for event in events %}
+          <tr>
+          <td data-title="Name">{{ event.title_event }}</td>
+          <td data-title="Name">{{ event.date_event}}</td>
+          <td data-title="Name">{{ event.time_event }}</td>
+          <td data-title="Name"><a class="btn btn-default" href="{% url 'show_event' pk=event.pk %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+</div>
 
 <!-- jquery -->
 <script src="{% static 'assets/jsListas/jquery.js'  %}"></script>

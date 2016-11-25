@@ -24,9 +24,26 @@
 <link rel="stylesheet" href="{% static 'assets/style.css'  %}">
 <script src="{% static 'jsListas/js/modernizr.js' %}"></script> <!-- Modernizr -->
 				
-			<div class="page-header">
-					<h1>Prueba</h1>
-            </div>
+  <div class="table-responsive-vertical shadow-z-1">
+  <!-- Table starts here -->
+  <table id="table" class="table table-hover table-mc-light-blue text-center">
+      <thead>
+        <tr>
+              <td>Configuracion</td>
+              <td>Ver</td>
+        </tr>
+      </thead>
+      <tbody>
+        {% for setting in settings %}
+          <tr>
+          <td data-title="Name">{{ setting.title_setting }}</td>
+          <td data-title="Name"><a class="btn btn-default" href="{% url 'show_setting' pk=setting.pk %}"><span class="glyphicon glyphicon-eye-open"></span></a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+</div>
 
 <!-- jquery -->
 <script src="{% static 'assets/jsListas/jquery.js'  %}"></script>

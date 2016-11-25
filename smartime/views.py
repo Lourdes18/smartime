@@ -13,11 +13,8 @@ def index(request):
 #SCRUD alarmas
 def show_alarms(request):
     # return HttpResponse('Hello from Python!')
-    return render(request, 'alarms/showAlarms.html')
-    '''
     alarms = Alarm.objects.all()
     return render(request, 'alarms/showAlarms.html',{'alarms': alarms})
-	'''
 
 def new_alarm(request):
     if request.method == "POST":
@@ -69,11 +66,8 @@ def remove_alarm(request, pk):
 #SCRUD Configuraciones
 def show_settings(request):
     # return HttpResponse('Hello from Python!')
-    return render(request, 'settings/showSettings.html')
-    '''
     settings = Setting.objects.all()
-    return render(request, 'settings/showSetting.html',{'settings': settings})
-    '''
+    return render(request, 'settings/showSettings.html',{'settings': settings})
 
 def new_setting(request):
     if request.method == "POST":
@@ -129,11 +123,8 @@ def remove_setting(request, pk):
 #SCRUD Eventos
 def show_events(request):
     # return HttpResponse('Hello from Python!')
-    return render(request, 'events/showEvents.html')
-    '''
     events = Event.objects.all()
     return render(request, 'events/showEvents.html',{'events': events})
-    '''
 
 def new_event(request):
     if request.method == "POST":
@@ -189,11 +180,8 @@ def remove_event(request, pk):
 #SCRUD tareas
 def show_homeworks(request):
     # return HttpResponse('Hello from Python!')
-    return render(request, 'homeworks/showHomeworks.html')
-    '''
     homeworks = Homeworks.objects.all()
     return render(request, 'homeworks/showHomeworks.html',{'homeworks': homeworks})
-    '''
 
 def new_homework(request):
     if request.method == "POST":
